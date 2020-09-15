@@ -72,7 +72,7 @@ def get_drink_detail(jwt):
 
 @app.route('/drinks', methods=['POST'])
 @requires_auth('post:drinks')
-def get_drink_detail(jwt):
+def post_drinks(jwt):
     data = request.get_json()
     if 'title' and 'recipe' not in data:
         abort(422)
@@ -142,7 +142,7 @@ def update_drink(jwt, id):
 
 @app.route('/drinks/<int:id>', methods=['DELETE'])
 @requires_auth('patch:drinks')
-def update_drink(jwt, id):
+def patch_drink(jwt, id):
     drink = Drink.query.get(id)
 
     if drink is None:
