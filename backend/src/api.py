@@ -141,8 +141,8 @@ def update_drink(jwt, id):
 
 
 @app.route('/drinks/<int:id>', methods=['DELETE'])
-@requires_auth('patch:drinks')
-def patch_drink(jwt, id):
+@requires_auth('delete:drinks')
+def delete_drink(jwt, id):
     drink = Drink.query.get(id)
 
     if drink is None:
