@@ -8,7 +8,7 @@ AUTH0_DOMAIN = 'dev-hevrtq9y.us.auth0.com'
 ALGORITHMS = ['RS256']
 API_AUDIENCE = 'coffeeShop'
 
-## AuthError Exception
+# AuthError Exception
 '''
 AuthError Exception
 A standardized way to communicate auth failure modes
@@ -63,6 +63,7 @@ def get_token_auth_header():
     token = parts[1]
     return token
 
+
 '''
 @TODO implement check_permissions(permission, payload) method
     @INPUTS
@@ -89,6 +90,7 @@ def check_permissions(permission, payload):
             'description': 'Permission not found.'
         }, 403)
     return True
+
 
 '''
 @TODO implement verify_decode_jwt(token) method
@@ -157,6 +159,7 @@ def verify_decode_jwt(token):
         'code': 'invalid_header',
         'description': 'Unable to find the appropriate key.'
     }, 400)
+
 
 '''
 @TODO implement @requires_auth(permission) decorator method
