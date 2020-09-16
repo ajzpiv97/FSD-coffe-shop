@@ -76,6 +76,104 @@ The `--reload` flag will detect file changes and restart the server automaticall
     - Right-clicking the collection folder for barista and manager, navigate to the authorization tab, and including the JWT in the token field (you should have noted these JWTs).
     - Run the collection and correct any errors.
     - Export the collection overwriting the one we've included so that we have your proper JWTs during review!
+    
+
+## API
+
+
+GET '/drinks'
+- Fetches a dictionary of drinks in which the keys are the ids, title and recipe
+- *Request Arguments:* None
+```
+{
+    "drinks": [
+        {
+            "id": 1,
+            "recipe": {
+                "color": "blue",
+                "parts": 1
+            },
+            "title": "Water3"
+        }
+    ],
+    "success": true
+}
+```
+
+GET '/drinks-detail'
+- Fetches a dictionary of drinks in which the keys are the ids, title, name and recipe
+- *Request parameters:* get:drinks-detail permission
+- *Example response:* 
+ ``` 
+{
+    "drinks": [
+        {
+            "id": 1,
+            "recipe": {
+                "color": "blue",
+                "name": "Water",
+                "parts": 1
+            },
+            "title": "Water3"
+        }
+    ],
+    "success": true
+}
+```
+
+POST `/drinks`
+- Add a new drink to the repository of available drinks
+- *Request arguments:* post:drinks permission
+- *Example response:* 
+```
+{
+    "drinks": [
+        {
+            "id": 2,
+            "recipe": {
+                "color": "blue",
+                "name": "Water",
+                "parts": 1
+            },
+            "title": "Water6"
+        }
+    ],
+    "success": true
+}
+```
+
+PATCH `/drinks/<int:id>`
+- Update a parameter of a specific drink 
+- *Request arguments:* int:id and patch:drinks permission
+- *Example response:* 
+```
+{
+    "drink": [
+        {
+            "id": 1,
+            "recipe": {
+                "color": "blue",
+                "name": "Water",
+                "parts": 1
+            },
+            "title": "Water5"
+        }
+    ],
+    "success": true
+}
+```
+DELETE `/drinks/<int:id>`
+- Delete a specific drink 
+- *Request arguments:* int:id and delete:drinks permission
+- *Example response:*
+```
+{
+    "delete": [
+        1
+    ],
+    "success": true
+}
+```
 
 ### Implement The Server
 
